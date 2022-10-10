@@ -32,7 +32,7 @@ if '-t' in args and args.index('-t') != len(args):
     refresh_time = int(args[args.index('-t') + 1])
 
 if '-o' in args and args.index('-o'):
-    if args.index('-o') != len(args):
+    if args.index('-o') != len(args) - 1:
         browser_link = args[args.index('-o') + 1]
 
 if refresh_time < 30:
