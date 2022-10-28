@@ -14,16 +14,17 @@ if '-h' in args:
     -k          -> Steam Web API key
     
     [OPTIONAL]    
-    -h          -> Idk what shit this doing
+    -h          -> Show help (This list)
     -t [time]   -> Set refresh time (Default: 30s)
-    -o [link]   -> Open web browser. Parameter sets a new link to open. (Default: tf2mart.net)              
+    -b          -> Should script open a browser on succses
+    -l [link]   -> Parameter sets a new link to open. (Default: tf2mart.net)              
     """)
     sys.exit()
 
 key = args[args.index('-k') + 1]
 # You can use your own if you have the game, which you will track
 steam_id64 = 76561198357516397  # Script creator's steam account ID.
-open_browser_on_success = False
+open_browser_on_success = '-b' in args
 browser_link = "https://tf2mart.net/order"
 steam_api_last_known_online = datetime.datetime.now()
 refresh_time = 30
@@ -31,8 +32,7 @@ refresh_time = 30
 if '-t' in args and args.index('-t') != len(args):
     refresh_time = int(args[args.index('-t') + 1])
 
-if '-o' in args and args.index('-o'):
-    if args.index('-o') != len(args) - 1:
+if '-l' in args and args.index('-o') != len(args) - 1:
         browser_link = args[args.index('-o') + 1]
 
 if refresh_time < 30:
